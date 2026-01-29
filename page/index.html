@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#" data-page="tasks" class="nav-link active">Tasks</a></li>
+            <li><a href="#" data-page="statistics" class="nav-link">Statistics</a></li>
+            <li><a href="#" data-page="achievements" class="nav-link">Achievements</a></li>
+        </ul>
+        <div class="theme-toggle">
+            <button id="theme-toggle-btn" class="theme-btn" title="Toggle theme">
+                <span id="theme-icon">🌙</span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div id="tasks-page" class="page active">
+            <h1>Task Manager</h1>
+
+            <div class="urgent-reminders" id="urgent-reminders">
+                <h2>⚠️ Urgent Tasks</h2>
+                <div id="urgent-list"></div>
+            </div>
+
+            <button class="btn btn-add-task" id="open-modal-btn">Add New Task</button>
+
+            <h2>My Tasks</h2>
+            <div class="task-list" id="task-list"></div>
+        </div>
+
+        <div id="add-task-modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Add New Task</h2>
+                    <button class="modal-close" id="close-modal-btn">&times;</button>
+                </div>
+                <form id="add-task-form">
+                    <div class="form-group">
+                        <label for="task-name">Task Name</label>
+                        <input type="text" id="task-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="task-deadline">Deadline</label>
+                        <input type="datetime-local" id="task-deadline" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Subtasks</label>
+                        <div id="subtask-inputs">
+                            <div class="subtask-input-group">
+                                <input type="text" placeholder="Subtask 1" class="subtask-input" required>
+                                <input type="number" placeholder="Est. time (min)" class="subtask-time" min="0">
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-small btn-secondary" id="add-subtask-btn">+ Add Subtask</button>
+                    </div>
+                    <button type="submit" class="btn">Add Task</button>
+                </form>
+            </div>
+        </div>
+
+        <div id="statistics-page" class="page">
+            <h1>Statistics</h1>
+            <div class="stats-grid">
+                <div class="stat-card completed">
+                    <div class="stat-number" id="stat-completed">0</div>
+                    <div class="stat-label">Tasks Completed</div>
+                </div>
+                <div class="stat-card in-progress">
+                    <div class="stat-number" id="stat-in-progress">0</div>
+                    <div class="stat-label">Tasks In Progress</div>
+                </div>
+                <div class="stat-card on-time">
+                    <div class="stat-number" id="stat-on-time">0</div>
+                    <div class="stat-label">Finished On Time</div>
+                </div>
+                <div class="stat-card late">
+                    <div class="stat-number" id="stat-late">0</div>
+                    <div class="stat-label">Finished Late</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="achievements-page" class="page">
+            <h1>Achievements</h1>
+            <div class="achievements-grid" id="achievements-grid"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
